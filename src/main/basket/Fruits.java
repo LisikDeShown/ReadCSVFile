@@ -1,8 +1,6 @@
-package com.company;
+package main.basket;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class Fruits {
     String type;
@@ -62,20 +60,7 @@ public class Fruits {
     }
 
     public long totalTypes(List<Fruits> list){
-
-
-
-//        Set<String> setOfTypes = new HashSet<>();
-//        for (int i=0; i<list.size();i++){
-//            setOfTypes.add(list.get(i).getType());
-//        }
         return list.stream().map(listFruits -> listFruits.getType().trim()).distinct().count();
-
-
-    }
-
-    public void printTypes(List<Fruits> list){
-
     }
 
 }
