@@ -7,10 +7,12 @@ import java.util.*;
 
 public class StartApplication {
 
+    private static final String SEPARATOR = File.separator;
+
     public static void main(String[] args) throws FileNotFoundException {
 
         List<Fruits> list= new ArrayList<>();
-                    File file = new File("src\\resource\\TestJava.csv");
+                    File file = new File("src" + SEPARATOR + "resource" + SEPARATOR + "TestJava.csv");
 
         Scanner scanner = new Scanner(file);
         while(scanner.hasNext()){
