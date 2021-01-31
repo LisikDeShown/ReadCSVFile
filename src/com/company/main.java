@@ -12,7 +12,7 @@ public class main {
 
         List<Fruits> list= new ArrayList<Fruits>();
         try {
-            File file = new File("/Users/DeLisik/Desktop/TestJava.csv");
+            File file = new File("/Users/DeLisik/Downloads/untitled/CucumberTestJulia/ReadCSVFile/src/resource/TestJava.csv");
             Scanner scanner = new Scanner(file);
             while(scanner.hasNext()){
                 String next = scanner.next();
