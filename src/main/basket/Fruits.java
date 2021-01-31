@@ -1,14 +1,17 @@
 package main.basket;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Fruits {
     String type;
-    String age;
+    int age;
     String char1;
     String char2;
 
-    public Fruits(String type, String age, String char1, String char2){
+    public Fruits(String type, int age, String char1, String char2){
         this.type=type;
         this.age=age;
         this.char1=char1;
@@ -26,11 +29,11 @@ public class Fruits {
         this.type = type;
     }
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
@@ -61,6 +64,17 @@ public class Fruits {
 
     public long totalTypes(List<Fruits> list){
         return list.stream().map(listFruits -> listFruits.getType().trim()).distinct().count();
+    }
+
+    public void oldestFruit(List<Fruits> list){
+
+        int oldest = list.stream()
+                .max(Comparator.comparing(obj -> obj.getAge())).map(obj -> obj.getAge()).get();
+
+        List<Fruits> listFruits = list.stream().filter(fruitObjects -> fruitObjects.getAge() == oldest).collect(Collectors.toList());
+
+        listFruits.forEach(objectFruits -> System.out.println(objectFruits.getType() + " " + objectFruits.getAge()));
+
     }
 
 }
