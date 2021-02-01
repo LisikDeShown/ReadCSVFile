@@ -80,11 +80,9 @@ public class Fruits {
 
     @Override
     public String toString() {
-        return "Fruits{" +
-                "type='" + type + '\'' +
-                ", char1='" + char1 + '\'' +
-                ", char2='" + char2 + '\'' +
-                '}';
+        return  type + ": " +
+                char1 + ", " +
+                char2;
     }
 
     public long totalTypes(List<Fruits> list){
@@ -106,92 +104,18 @@ public class Fruits {
         Map<String, Long> getGroups = listObjects.stream()
                 .collect(groupingBy(Fruits::getType, Collectors.counting()));
 
-        getGroups.forEach((key, value) -> System.out.println(key + ": " + value));
+        getGroups.forEach((key, value) -> System.out.println(key + " " + value));
     }
 
     public void getGroupTypesAndChars (List<Fruits> listObjects) {
 
-        listObjects.stream().forEach(ob -> {
-            //ob.
-        });
-
-//        Map<Fruits, IntSummaryStatistics> collect = listObjects.stream()
-//                .collect(groupingBy(
-//                        fruit -> new Fruits(fruit.type, fruit.char1, fruit.char2),
-//                        Collectors.summarizingInt(fruit -> fruit.age)));
-//                collect.forEach((k,v) ->{
-//                    k.age= (int) v.getSum();
-//                    System.out.format(k.age+" "+k.type+": "+k.char1+", "+k.char2+"\n");
-//                });
-
-
-
-
-//
-//        Comparator<Fruits> compareFruits =Comparator
-//                .comparing(Fruits::getType)
-//                .thenComparing(Fruits::getChar1)
-//                .thenComparing(Fruits::getChar2);
-//
-//        List<Fruits> sortedFruits =listObjects.stream()
-//                .sorted(compareFruits)
-//                .collect(Collectors.toList(),
-//                        Collectors.counting());
-//        System.out.println(sortedFruits);
-
-
-
-
-
-        //        List<Fruits> newList = new ArrayList<>();
-//
-//        listObjects.forEach(a -> newList.add(new Fruits(a.getType(),
-//                a.getChar1(),
-//                a.getChar2())));
-//
-//
-//
-//
-//        Map<Fruits, Integer> map = newList.stream().
-//                collect(Collectors.toMap(Function.identity(), value -> 1, Integer::sum));
-//        map.forEach((key, value) -> System.out.println(value + ": " + key.getAge() + ": " + key.getChar1() + ", " + key.getChar2()));
-//
-
-        // 1. Set of 3 elements (4 of them)
-        // 2. Run list if list has set -> store as map number, set (loop)
-//        Set<Fruits> fruitsSet = new HashSet<>();
-//
-//        listObjects.forEach(fruitObject -> {
-//            fruitsSet.add(new Fruits(fruitObject.getType(), fruitObject.getChar1(), fruitObject.getChar2()));
-//        });
-//
-//        fruitsSet.forEach(a -> System.out.println(a.getType() + ", " + a.getChar1() +", " + a.getChar2()));
-//        Map<Integer, Set<Fruits>> mapFruits = new HashMap<>();
-//
-//
-//        for (Fruits element : fruitsSet) {
-//            int sum = 0;
-//
-//            for (Fruits fruitObject : listObjects) {
-//                if (element.getType().equals(fruitObject.getType()) && element.getChar1().equals(fruitObject.getChar1())
-//                && element.getChar2().equals(fruitObject.getChar2())) {
-//                    sum++;
-//                }
-//            }
-//            mapFruits.put(sum, fruitsSet);
-//
-//        }
-//        mapFruits.forEach((key, value) -> System.out.println(key + ": " + value));
-
-
-
-
-        // if set has values from the list +1
-
-
-
-//        setOfList.forEach(System.out::println);
-
+        Map<Object, Long> collect = listObjects.stream()
+                .collect(groupingBy(
+                        fruit -> new Fruits(fruit.type, fruit.char1, fruit.char2),
+                        Collectors.counting()));
+                collect.forEach((k,v) ->{
+                    System.out.format(v+" "+k+"\n");
+                });
 
     }
 
