@@ -32,32 +32,16 @@ public class Fruits {
         return type;
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public int getAge() {
         return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 
     public String getChar1() {
         return char1;
     }
 
-    public void setChar1(String char1) {
-        this.char1 = char1;
-    }
-
     public String getChar2() {
         return char2;
-    }
-
-    public void setChar2(String char2) {
-        this.char2 = char2;
     }
 
     @Override
@@ -92,7 +76,6 @@ public class Fruits {
         List<Fruits> listFruits = list.stream().filter(fruitObjects -> fruitObjects.getAge() == oldest).collect(Collectors.toList());
 
         listFruits.forEach(objectFruits -> System.out.println(objectFruits.getType() + " " + objectFruits.getAge()));
-
     }
 
     public void getGroups (List<Fruits> listObjects) {
@@ -110,14 +93,9 @@ public class Fruits {
                         fruit -> new Fruits(fruit.type, fruit.char1, fruit.char2),
                         Collectors.counting()));
 
-
         collect.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
                 .forEachOrdered(x -> sortedMap.put(x.getKey(), x.getValue()));
 
-
-        sortedMap.forEach((k,v) ->{
-                            System.out.print(v+" "+k+"\n");
-                }
-                );
+        sortedMap.forEach((k,v) -> System.out.print(v+" "+k+"\n"));
     }
 }
