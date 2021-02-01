@@ -1,6 +1,5 @@
 package main.basket;
 
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
@@ -10,9 +9,11 @@ public class StartApplication {
     private static final String SEPARATOR = File.separator;
 
     public static void main(String[] args) throws FileNotFoundException {
+        Scanner sc = new Scanner(System.in);
+        String path = sc.next();
 
         List<Fruits> list= new ArrayList<>();
-                    File file = new File("src" + SEPARATOR + "resource" + SEPARATOR + "TestJava.csv");
+                    File file = new File(path);
 
         Scanner scanner = new Scanner(file);
         Fruits fruits = new Fruits();

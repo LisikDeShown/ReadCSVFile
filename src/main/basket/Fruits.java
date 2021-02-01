@@ -1,5 +1,6 @@
 package main.basket;
 
+
 import java.util.*;
 import java.util.function.Function;
 import java.util.function.ToIntFunction;
@@ -80,11 +81,9 @@ public class Fruits {
 
     @Override
     public String toString() {
-        return "Fruits{" +
-                "type='" + type + '\'' +
-                ", char1='" + char1 + '\'' +
-                ", char2='" + char2 + '\'' +
-                '}';
+        return  type + ": " +
+                char1 + ", " +
+                char2;
     }
 
     public long totalTypes(List<Fruits> list){
@@ -106,31 +105,25 @@ public class Fruits {
         Map<String, Long> getGroups = listObjects.stream()
                 .collect(groupingBy(Fruits::getType, Collectors.counting()));
 
-        getGroups.forEach((key, value) -> System.out.println(key + ": " + value));
+        getGroups.forEach((key, value) -> System.out.println(key + " " + value));
     }
 
     public void getGroupTypesAndChars (List<Fruits> listObjects) {
 
-        listObjects.forEach(System.out::println);
-        Set<Fruits>set = new HashSet<>(listObjects);
+        LinkedHashMap<Object, Long> sortedMap=new LinkedHashMap<>();
+        Map<Object, Long> collect = listObjects.stream()
+                .collect(groupingBy(
+                        fruit -> new Fruits(fruit.type, fruit.char1, fruit.char2),
+                        Collectors.counting()));
 
-        System.out.println(listObjects.size());
-        System.out.println(set.size());
-        List<List<Fruits>> listOfList = new ArrayList<>();
+
+        collect.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .forEachOrdered(x -> sortedMap.put(x.getKey(), x.getValue()));
 
 
-        for(Fruits objectList : listObjects){
-            for (Fruits objectSet : set) {
-                if(objectList.equals(objectSet)) {
-                    listOfList.add(new ArrayList<>(set));
+        sortedMap.forEach((k,v) ->{
+                            System.out.format(v+" "+k+"\n");
                 }
-            }
-        }
-
-        Map<List<Fruits>, Integer> collect = listOfList.stream().collect(groupingBy(x -> x, summingInt(x -> 1)));
-        collect.forEach((k, v) -> System.out.println(k + ": "));
-
+                );
     }
-
-
 }
