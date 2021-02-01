@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ReadCSVFile:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ReadCSVFile_jar</output-path>
+    <root id="archive" name="ReadCSVFile.jar">
+      <element id="module-output" name="ReadCSVFile" />
+    </root>
+  </artifact>
+</component>

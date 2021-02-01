@@ -2,14 +2,8 @@ package main.basket;
 
 
 import java.util.*;
-import java.util.function.Function;
-import java.util.function.ToIntFunction;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
 import static java.util.stream.Collectors.groupingBy;
-import static java.util.stream.Collectors.summingInt;
 
 public class Fruits {
     String type;
@@ -122,7 +116,7 @@ public class Fruits {
 
 
         sortedMap.forEach((k,v) ->{
-                            System.out.format(v+" "+k+"\n");
+                            System.out.print(v+" "+k+"\n");
                 }
                 );
     }
