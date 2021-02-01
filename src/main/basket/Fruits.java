@@ -109,15 +109,20 @@ public class Fruits {
 
     public void getGroupTypesAndChars (List<Fruits> listObjects) {
 
+        LinkedHashMap<Object, Long> sortedMap=new LinkedHashMap<>();
         Map<Object, Long> collect = listObjects.stream()
                 .collect(groupingBy(
                         fruit -> new Fruits(fruit.type, fruit.char1, fruit.char2),
                         Collectors.counting()));
-                collect.forEach((k,v) ->{
-                    System.out.format(v+" "+k+"\n");
-                });
 
+
+        collect.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .forEachOrdered(x -> sortedMap.put(x.getKey(), x.getValue()));
+
+
+        sortedMap.forEach((k,v) ->{
+                            System.out.format(v+" "+k+"\n");
+                }
+                );
     }
-
-
 }
